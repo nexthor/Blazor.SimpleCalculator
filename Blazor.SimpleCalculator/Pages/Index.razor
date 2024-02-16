@@ -1,9 +1,44 @@
 ﻿@page "/"
 
-<PageTitle>Index</PageTitle>
+<PageTitle>Simple Calculator</PageTitle>
 
-<h1>Hello, world!</h1>
-
-Welcome to your new app.
-
-<SurveyPrompt Title="How is Blazor working for you?" />
+<div class="row g-4">
+    <div class="col-12 col-md-6 offset-md-3">
+        <h1>Simple Calculator</h1>
+        <p>Enter two numbers and click the button to add them together.</p>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="operation" id="operation-add" value="@Operation.Add" @onclick="(() => operation = Operation.Add)" checked />
+            <label class="form-check-label" for="operation-add">Add</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="operation" id="operation-substract" value="@Operation.Subtract" @onclick="(() => operation = Operation.Subtract)" />
+            <label class="form-check-label" for="operation-substract">Substract</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="operation" id="operation-multiply" value="@Operation.Multiply" @onclick="(() => operation = Operation.Multiply)" />
+            <label class="form-check-label" for="operation-multiply">Multiply</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="operation" id="operation-divide" value="@Operation.Divide" @onclick="(() => operation = Operation.Divide)" />
+            <label class="form-check-label" for="operation-divide">Divide</label>
+        </div>
+    </div>
+    <div class="col-12 col-md-6 offset-md-3">
+        <div class="mb-3">
+            <label for="firstNumber" class="form-label">First Number</label>
+            <input type="number" @bind="firstNumber" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label for="secondNumber" class="form-label">Second Number</label>
+            <input type="number" @bind="secondNumber" class="form-control" />
+        </div>
+    </div>
+    <div class="col-12 col-md-6 offset-md-3 d-flex justify-content-center align-items-center">
+        <span class="fw-bold">Result:</span> <span class="h4 text-success mb-0">@result</span>
+    </div>
+    <div class="col-12 col-md-6 offset-md-3">
+        <div class="d-grid gap-2">
+            <button class="btn btn-primary" @onclick="Calculate"> Calculate </button>
+        </div>
+    </div>
+</div>
